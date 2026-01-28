@@ -22,30 +22,28 @@ menu = st.sidebar.radio(
     ["DLBCL metadata", "Related publications", "Contact me"],
 )
 
-# Dummy STEM data
-DLBCL_data = pd.DataFrame({
+# Dummy DLBCL metadata
+dlbcl_data = pd.DataFrame({
     "Subtype": ["Not otherwise specified", "High-grade B-cell lymphoma"],
     "Frequency (%)": [90, 10],
     "Prognosis": ["Better", "Poor"],
 })
 
-physics_data = pd.DataFrame({
-    "Experiment": ["Alpha Decay", "Beta Decay", "Gamma Ray Analysis", "Quark Study", "Higgs Boson"],
-    "Energy (MeV)": [90, 10],
-    "Date": pd.date_range(start="2024-01-01", periods=5),
+COO_data = pd.DataFrame({
+    "Cell of origin": ["GCB", "ABC"],
+    "Frequency (%)": [55, 45],
+    "Prognosis": ["Better", "Worse"],,
 })
 
-astronomy_data = pd.DataFrame({
-    "Celestial Object": ["Mars", "Venus", "Jupiter", "Saturn", "Moon"],
-    "Brightness (Magnitude)": [-2.0, -4.6, -1.8, 0.2, -12.7],
-    "Observation Date": pd.date_range(start="2024-01-01", periods=5),
+high_grade = pd.DataFrame({
+    "High-grade B-cell lymphoma": ["Double-hit", "Triple-hit"],
+    "Translocation status": ["MYC and BCL2 rearranged", "MYC, BCL2 and BCL6 rearranged"],
+    "Frequency (%)": [7, 2],
 })
 
-weather_data = pd.DataFrame({
-    "City": ["Cape Town", "London", "New York", "Tokyo", "Sydney"],
-    "Temperature (°C)": [25, 10, -3, 15, 30],
-    "Humidity (%)": [65, 70, 55, 80, 50],
-    "Recorded Date": pd.date_range(start="2024-01-01", periods=5),
+ipi_score = pd.DataFrame({
+    "International prognostic index score": ["0-1", "2", "3", "4-5"],
+    "Meaning": ["Low risk", "Low-intermediate risk", "high-intermediate risk", "high risk"],
 })
 
 # Sections based on menu selection
@@ -54,9 +52,9 @@ if menu == "Researcher Profile":
     st.sidebar.header("Profile Options")
 
     # Collect basic information
-    name = "Dr. Jane Doe"
-    field = "Astrophysics"
-    institution = "University of Science"
+    name = "Ms. Grace van Heerden"
+    field = "Anatomical Pathology"
+    institution = "University of Cape Town"
 
     # Display basic profile information
     st.write(f"**Name:** {name}")
@@ -64,8 +62,8 @@ if menu == "Researcher Profile":
     st.write(f"**Institution:** {institution}")
     
     st.image(
-    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-    caption="Nature (Pixabay)"
+    "https://share.google/SUj6KvYMQR5yy4nTZ",
+    caption="UCT Campus"
 )
 
 elif menu == "Publications":
@@ -97,26 +95,26 @@ elif menu == "Publications":
         else:
             st.write("The CSV does not have a 'Year' column to visualize trends.")
 
-elif menu == "STEM Data Explorer":
+elif menu == "DLBCL metadata":
     st.title("STEM Data Explorer")
     st.sidebar.header("Data Selection")
     
     # Tabbed view for STEM data
     data_option = st.sidebar.selectbox(
         "Choose a dataset to explore", 
-        ["Physics Experiments", "Astronomy Observations", "Weather Data"]
+        ["DLBCL metadata", "Astronomy Observations", "Weather Data"]
     )
 
-    if data_option == "Physics Experiments":
-        st.write("### Physics Experiment Data")
-        st.dataframe(physics_data)
+    if data_option == "DLBCL metadata":
+        st.write("### DLBCL metadata")
+        st.dataframe(dlbcl_metadata)
         # Add widget to filter by Energy levels
-        energy_filter = st.slider("Filter by Energy (MeV)", 0.0, 10.0, (0.0, 10.0))
-        filtered_physics = physics_data[
-            physics_data["Energy (MeV)"].between(energy_filter[0], energy_filter[1])
+        frequency = st.slider("Filter by Frequency (%)", 0.0, 100.0, (0.0, 100.0))
+        filtered_physics = dlbcl_metadata[
+            dlbcl_metadata["Energy (MeV)"].between(frequency[0], frequency[1])
         ]
-        st.write(f"Filtered Results for Energy Range {energy_filter}:")
-        st.dataframe(filtered_physics)
+        st.write(f"Filtered Results for Frequency {frequency}:")
+        st.dataframe(filtered_dlbcl)
 
     elif data_option == "Astronomy Observations":
         st.write("### Astronomy Observation Data")
