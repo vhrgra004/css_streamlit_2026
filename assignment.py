@@ -13,7 +13,7 @@ import pandas as pd
 import numpy as np
 
 # Set page title
-st.set_page_config(page_title="Researcher Profile and Diffuse Large B-cell Lymphoma", layout="wide")
+st.set_page_config(page_title="Researcher Profile", layout="wide")
 
 # Sidebar Menu
 st.sidebar.title("Data Options")
