@@ -19,19 +19,19 @@ st.set_page_config(page_title="Researcher Profile", layout="wide")
 st.sidebar.title("Data Options")
 menu = st.sidebar.radio(
     "Go to:",
-    ["About me", "Related publications", "DLBCL metadata", "Contact me"],
+    ["DLBCL metadata", "Related publications", "Contact me"],
 )
 
 # Dummy STEM data
 DLBCL_data = pd.DataFrame({
-    "Experiment": ["Alpha Decay", "Beta Decay", "Gamma Ray Analysis", "Quark Study", "Higgs Boson"],
-    "Energy (MeV)": [4.2, 1.5, 2.9, 3.4, 7.1],
-    "Date": pd.date_range(start="2024-01-01", periods=5),
+    "Subtype": ["Not otherwise specified", "High-grade B-cell lymphoma"],
+    "Frequency (%)": [90, 10],
+    "Prognosis": ["Better", "Poor"],
 })
 
 physics_data = pd.DataFrame({
     "Experiment": ["Alpha Decay", "Beta Decay", "Gamma Ray Analysis", "Quark Study", "Higgs Boson"],
-    "Energy (MeV)": [4.2, 1.5, 2.9, 3.4, 7.1],
+    "Energy (MeV)": [90, 10],
     "Date": pd.date_range(start="2024-01-01", periods=5),
 })
 
