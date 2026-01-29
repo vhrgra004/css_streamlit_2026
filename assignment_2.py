@@ -76,11 +76,6 @@ high_grade = pd.DataFrame({
     "Frequency (%)": [7, 2],
 })
 
-ipi_score = pd.DataFrame({
-    "International prognostic index score": [0, 2, 3, 4],
-    "Meaning": ["Low risk", "Low-intermediate risk", "high-intermediate risk", "high risk"],
-})
-
 # Tabbed view for STEM data
 st.subheader("DLBCL Metadata Viewer")
 data_option = st.selectbox(
@@ -120,18 +115,6 @@ elif data_option == "High-grade B-cell lymphoma":
     ]
     st.write(f"Filtered Results for Frequency {frequency_filter}:")
     st.dataframe(filtered_frequency)
-
-elif data_option == "International prognostic index":
-    st.write("### International prognostic index (IPI)")
-    st.dataframe(ipi_score)
-    # Add widget to filter by score
-    score_filter = st.slider("Score", 0.0, 5.0, (0.0, 5.0))
-    filtered_score = ipi_score[
-        ipi_score ["International Prognostic Index (%)"].between(score_filter[0], score_filter[1])
-    ]
-    st.write(f"Filtered Results for IPI score {score_filter}:")
-    st.dataframe(filtered_score)
-
 
 
 # Add a contact section
