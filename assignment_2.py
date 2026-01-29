@@ -60,6 +60,7 @@ if uploaded_file:
 # Dummy DLBCL metadata
 dlbcl_data = pd.DataFrame({
     "Subtype": ["Not otherwise specified", "High-grade B-cell lymphoma"],
+    "Frequency (%)": [90, 10],
     "Prognosis": ["Better", "Poor"],
 })
 
