@@ -77,7 +77,7 @@ high_grade = pd.DataFrame({
 })
 
 ipi_score = pd.DataFrame({
-    "International prognostic index score": ["0-1", "2", "3", "4-5"],
+    "International prognostic index score": [0, 2, 3, 4],
     "Meaning": ["Low risk", "Low-intermediate risk", "high-intermediate risk", "high risk"],
 })
 
@@ -113,13 +113,26 @@ elif data_option == "Cell-of-origin":
 elif data_option == "High-grade B-cell lymphoma":
     st.write("### High-grade B-cell lymphoma")
     st.dataframe(high_grade)
-    # Add widgets to filter by temperature and humidity
-    frequency_filter = st.slider("Filter by Frequency (%)", 0.0, 100.0, (0.0, 100.0))
+    # Add widgets to filter by frequency
+    frequency_filter = st.slider("Filter by Frequency (%)", 0.0, 10.0, (0.0, 10.0))
     filtered_frequency = high_grade[
         high_grade["Frequency (%)"].between(frequency_filter[0], frequency_filter[1])
     ]
     st.write(f"Filtered Results for Frequency {frequency_filter}:")
     st.dataframe(filtered_frequency)
+
+elif data_option == "International prognostic index":
+    st.write("### International prognostic index (IPI)")
+    st.dataframe(ipi_score)
+    # Add widget to filter by score
+    score_filter = st.slider("Score", 0.0, 5.0, (0.0, 5.0))
+    filtered_score = ipi_score[
+        ipi_score ["International Prognostic Index (%)"].between(score_filter[0], score_filter[1])
+    ]
+    st.write(f"Filtered Results for IPI score {score_filter}:")
+    st.dataframe(filtered_score)
+
+
 
 # Add a contact section
 st.header("Contact Information")
