@@ -31,7 +31,7 @@ st.image(
 
 # Add a section for publications
 st.header("Publications")
-uploaded_file = st.file_uploader("csv-diffuselar-set.csv", type="csv")
+uploaded_file = st.file_uploader("DLBCL journal articles", type="csv")
 
 if uploaded_file:
     publications = pd.read_csv(uploaded_file)
