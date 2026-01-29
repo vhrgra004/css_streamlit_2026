@@ -80,7 +80,7 @@ high_grade = pd.DataFrame({
 st.subheader("DLBCL Metadata Viewer")
 data_option = st.selectbox(
     "Choose a dataset to explore", 
-    ["DLBCL subtype", "Cell-of-origin", "High-grade B-cell lymphoma", "International prognostic index score"]
+    ["DLBCL subtype", "Cell-of-origin", "High-grade B-cell lymphoma"]
 )
 
 if data_option == "DLBCL subtype":
