@@ -51,11 +51,11 @@ if uploaded_file:
 # Add a section for visualizing publication trends
 st.header("Publication Trends")
 if uploaded_file:
-    if "Year" in publications.columns:
-        year_counts = publications["Year"].value_counts().sort_index()
+    if "Publication Year" in publications.columns:
+        year_counts = publications["Publication Year"].value_counts().sort_index()
         st.bar_chart(year_counts)
     else:
-        st.write("The CSV does not have a 'Year' column to visualize trends.")
+        st.write("The CSV does not have a 'Publication Year' column to visualize trends.")
 
 # Dummy DLBCL metadata
 dlbcl_data = pd.DataFrame({
